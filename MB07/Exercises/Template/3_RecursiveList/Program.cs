@@ -12,10 +12,10 @@ namespace _3_RecursiveList {
             // Iteriere über die Liste 
             // TODO: RecursiveList.Traverse implementieren
             Console.WriteLine("RecursiveList.Traverse");
-            //foreach (string s in list1.Traverse)
-            //{
-            //    Console.WriteLine(s);
-            //}
+            foreach (string s in list1.Traverse)
+            {
+                Console.WriteLine(s);
+            }
 
             // Iteriere über die Liste im umgekehrter Reihenfolge
             // TODO: RecursiveList.Inverse implementieren
@@ -35,10 +35,10 @@ namespace _3_RecursiveList {
 
             // Iteriere über leere Liste 
             Console.WriteLine("RecursiveList.Traverse (leer)");
-            //foreach (string s in list2.Traverse)
-            //{
-            //    Console.WriteLine(s);
-            //}
+            foreach (string s in list2.Traverse)
+            {
+                Console.WriteLine(s);
+            }
 
             // Iteriere über leere Liste im umgekehrter Reihenfolge
             Console.WriteLine("RecursiveList.Inverse (leer)");
