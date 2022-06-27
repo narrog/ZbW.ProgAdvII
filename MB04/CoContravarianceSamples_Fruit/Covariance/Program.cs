@@ -3,12 +3,36 @@
 
 using Covariance;
 
-FirstSample();
+
+string[] strings = new string[] { "a", "b", "c" };
+
+object[] objects = strings;
+
+objects[1] = 5;
+
+
+FirstSampleWithList();
+//FirstSample();
 //WithStandardGenerics();
 //WithHomemadeGeneric();
 //WithArrays();
 
 
+
+void FirstSampleWithList() {
+
+    List<Apple> apples = new List<Apple>();
+    apples.Add(new Apple {Weight = 500});
+    apples.Add(new Apple {Weight = 550});
+
+    var totalApples = SumWeights(apples); // Was könnte der Grund sein, dass das nicht geht?
+
+    List<Banana> bananas = new List<Banana>();
+    bananas.Add(new Banana { Weight = 800 });
+    bananas.Add(new Banana { Weight = 790 });
+
+    var totalBananas = SumWeights(bananas);
+}
 
 void FirstSample() {
     Console.WriteLine("Hello, World!");
@@ -19,8 +43,23 @@ void FirstSample() {
 
     Console.WriteLine(fruits.Get(0));
     Console.WriteLine(fruits.Get(1));
+
+    BagOfApples apples = (BagOfApples)fruits;
+    Console.WriteLine(apples.Get(0));
+    Console.WriteLine(apples.Get(1));
+
 }
 
+decimal SumWeights(IEnumerable<Fruit> fruits) {
+    var ret = 0m;
+    foreach (var fruit in fruits) {
+        ret += fruit.Weight;
+    }
+    //fruits.Ad
+    //fruits.Add(new Banana() {Weight = 450});
+
+    return ret;
+}
 
 void WithStandardGenerics() {
     var bagOfApples = new List<Apple>() {

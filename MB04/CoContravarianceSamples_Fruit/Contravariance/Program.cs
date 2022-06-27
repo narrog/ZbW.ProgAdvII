@@ -3,9 +3,26 @@
 using Contravariance;
 
 
-SimpleExample();
-SortingWithInterface();
-SortingWithDelegate();
+FirstExample();
+//SimpleExample();
+//SortingWithInterface();
+//SortingWithDelegate();
+
+void FirstExample() {
+    var appleAction = new MyAction<Apple>(a => Console.WriteLine($"Weight of Apple: {a.Weight}"));
+    PerformAppleAction(appleAction);
+
+    var bananaAction = new MyAction<Banana>(b => Console.WriteLine($"Weight of Banana: {b.Weight}"));
+    PerformAppleAction(bananaAction);
+
+    var fruitAction = new MyAction<Fruit>(f => Console.WriteLine($"Weight of Fruit: {f.Weight}"));
+    PerformAppleAction(fruitAction);
+}
+
+void PerformAppleAction(MyAction<Apple> zebraAction) {
+    var apple = new Apple { Weight = 600 };
+    zebraAction(apple);
+}
 
 
 void SimpleExample() {
@@ -17,6 +34,8 @@ void SimpleExample() {
 
     IContravariant<Apple> contravariantApples = contravariantFruit;
 }
+
+
 
 void FirstSample()
 {
@@ -95,4 +114,10 @@ void SortingWithDelegate()
 
     foreach (var apple in apples)
         Console.WriteLine(apple);
+}
+
+public interface MyEnumerable<out T> {
+    T GetElementAt(int index);
+
+    //void AddElement(T element);
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Covariance
 {
     public class Fruit {
+        public decimal Weight { get; set; }
     }
 
     public class Apple : Fruit {
