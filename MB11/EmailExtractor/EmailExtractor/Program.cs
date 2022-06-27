@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace EmailExtractor {
     class Program {
@@ -14,6 +16,11 @@ fransiscajw@gmail.com
 Hi Cindy ...pls share the Salary guide to donny_tri_wardono@yahoo.co.id thank a";
 
             var mails = ExtractEmails(text);
+            foreach(var mail in mails)
+            {
+                Console.WriteLine(mail);
+            }
+            Console.ReadKey();
         }
 
 
@@ -21,6 +28,11 @@ Hi Cindy ...pls share the Salary guide to donny_tri_wardono@yahoo.co.id thank a"
             var list = new List<string>();
 
             // TODO: extract Mailadresses from text and add it to list
+            var matches = Regex.Matches(text, @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+            foreach (Match match in matches)
+            {
+                list.Add(match.Value);
+            }
 
             return list;
         }
