@@ -1,10 +1,18 @@
-﻿using System;
+﻿using Autofac;
+using System;
 
 namespace ShopperAutofac {
     class Program {
         static void Main(string[] args) {
             // TODO: Configure and use Autofac
 
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterType<Shopper>();
+            containerBuilder.RegisterType<MasterCard>().As<ICreditCard>();
+            containerBuilder.RegisterType<EftTerminal>().AsImplementedInterfaces();
+            var container = containerBuilder.Build();
+
+            var shopper = container.Resolve<Shopper>();
 
             shopper.Charge();
             // Erwartete Ausgabe:
